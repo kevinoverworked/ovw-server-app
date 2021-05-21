@@ -1,27 +1,23 @@
 import React, { Component } from "react";
 import "./App.css";
-import axios from "axios"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Navigation, Home, About } from "./components";
 
 class App extends Component {
-  state = {
-    response: {}
-  };
-  
-  componentDidMount() {
-    axios.get("/api/v1/say-something").then((res) => {
-      const response = res.data;
-      this.setState({response});
-    });
-  }
 
   render() {
     return (
       <div className="App">
-        <h1>Hello from the frontend!</h1>
-        <h1>{this.state.response.body}</h1>
+        <Router>
+          <Navigation />
+          <Switch>
+            <Route path="/" exact component={() => <Home />} />
+            <Route path="/about" exact component={() => <About />} />
+          </Switch>
+        </Router>
       </div>
     );
   }
-}
+};
 
 export default App;

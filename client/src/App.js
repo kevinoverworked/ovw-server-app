@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Navigation, Home, About } from "./components";
+import { Navigation, Home, About, Login, Dashboard } from "./components";
 
 class App extends Component {
 
@@ -9,11 +9,17 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Navigation />
-          <Switch>
-            <Route path="/" exact component={() => <Home />} />
-            <Route path="/about" exact component={() => <About />} />
-          </Switch>
+          <header>
+            <Navigation />
+          </header>
+          <div className="content">
+            <Switch>
+              <Route path="/" exact component={() => <Home />} />
+              <Route path="/about" exact component={() => <About />} />
+              <Route path="/login" exact component={() => <Login />} />
+              <Route path="/dashboard" exact component={() => <Dashboard />} />
+            </Switch>
+          </div>
         </Router>
       </div>
     );

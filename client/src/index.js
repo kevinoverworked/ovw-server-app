@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <Auth0Provider
-    domain="localhost:3000"//"twilight-star-2178.us.auth0.com"
+    domain="twilight-star-2178.us.auth0.com"
     clientId="Mf3G2QEWoeQHQ7ABY7c54ssLjyxgkX6D"
     redirectUri={window.location.origin}
   >

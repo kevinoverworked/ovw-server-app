@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 // Require Route
-/*const api = require("./src/routes/routes");
+const api = require("./src/routes/routes");
 // Configure app to use route
 app.use("/api/v1/", api);
 
@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging")
     app.get("*", function (req, res) {
         res.sendFile(path.join(__dirname, "client/build", "index.html"));
     });
-};*/
+};
 
 // Catch any bad requests
 app.get("*", (req, res) => {
@@ -55,7 +55,7 @@ app.get("*", (req, res) => {
 
 
 
-
+/*
 // validate the user credentials
 app.post('/users/signin', function (req, res) {
     
@@ -74,7 +74,7 @@ app.post('/users/signin', function (req, res) {
         connectionString: process.env.DATABASE_URL,// || 'postgresql://postgres:Superoverworked1!@localhost:5432/postgres',
         ssl: false /*{
             rejectUnauthorized: false
-        }*/
+        }
     });
     client.connect();
     client.query(`SELECT * FROM public."Users" WHERE user_email = '${user}' AND user_password = '${pwd}'`, (err, result) => {
@@ -104,7 +104,7 @@ app.post('/users/signin', function (req, res) {
       });
     }*/
    
-    
+    /*
   });
 
 
@@ -165,7 +165,7 @@ app.use(function (req, res, next) {
   app.get('/', (req, res) => {
     if (!req.user) return res.status(401).json({ success: false, message: 'Invalid user to access it.' });
     res.send('Welcome to the Node.js Tutorial! - ' + req.user.name);
-  });
+  });*/
 
 
 

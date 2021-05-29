@@ -24,7 +24,6 @@ function generateToken(user) {
 // return basic user details
 function getCleanUser(user) {
   if (!user) return null;
- console.log(user.user_email);
   return {
     userId: user.user_uuid,
     first_name: user.user_firstname,

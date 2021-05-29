@@ -9,7 +9,7 @@ const url = require('url'); // to parse url
 const https = require('https');// to send https requests 
 const utils = require('./utils');
 const { Client } = require('pg');
-
+let userObj, token;
 
 // Create a new express application named "app"
 const app = express();
@@ -18,10 +18,10 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // This application level middleware prints incoming requests to the servers console, useful to see incoming requests
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
     console.log(`Request_Endpoint: ${req.method} ${req.url}`);
     next();
-});
+});*/
 
 // Configure the bodyParser middleware
 app.use(bodyParser.json());
@@ -55,7 +55,7 @@ app.get("*", (req, res) => {
 
 
 
-/*
+
 // validate the user credentials
 app.post('/users/signin', function (req, res) {
     
@@ -74,26 +74,24 @@ app.post('/users/signin', function (req, res) {
         connectionString: process.env.DATABASE_URL,// || 'postgresql://postgres:Superoverworked1!@localhost:5432/postgres',
         ssl: false /*{
             rejectUnauthorized: false
-        }
+        }*/
     });
     client.connect();
-    client.query(`SELECT * FROM public."Users" WHERE user_email = '${user}' AND user_password = '${pwd}'`, (err, result) => {
-        try {
+    client.query(`SELECT * FROM public."Users" WHERE user_email = '${user}' AND user_password = '${pwd}'`, (err, result) => { 
+      try {
             // generate token
-            const token = utils.generateToken(result.rows[0]);
+            token = utils.generateToken(result.rows[0]);
             // get basic user details
-            const userObj = utils.getCleanUser(result.rows[0]);
+            userObj = utils.getCleanUser(result.rows[0]);
             // return the token along with user details
-            console.log(JSON.stringify(userObj));
-            client.end();
-            return res.json({ user: userObj, token });
+            client.end();            
         } catch (err) {
             return res.status(401).json({
                 error: true,
                 message: "Username or Password is wrong."
             });
         }
-        
+        return res.json({ user: userObj, token });
     });
 
     // return 401 status if the credential is not match.
@@ -104,7 +102,7 @@ app.post('/users/signin', function (req, res) {
       });
     }*/
    
-    /*
+    
   });
 
 
@@ -113,6 +111,7 @@ app.post('/users/signin', function (req, res) {
 app.get('/verifyToken', function (req, res) {
     // check header or url parameters or post parameters for token
     var token = req.query.token;
+    console.log(token);
     if (!token) {
       return res.status(400).json({
         error: true,
@@ -162,7 +161,7 @@ app.use(function (req, res, next) {
   });
    
   // request handlers
-  app.get('/', (req, res) => {
+  /*app.get('/', (req, res) => {
     if (!req.user) return res.status(401).json({ success: false, message: 'Invalid user to access it.' });
     res.send('Welcome to the Node.js Tutorial! - ' + req.user.name);
   });*/

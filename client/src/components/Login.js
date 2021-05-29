@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { setUserSession } from '../Utils/Common';
+import { useHistory } from "react-router-dom";
  
 function Login(props) {
+    const history = useHistory();
     const [loading, setLoading] = useState(false);
     const username = useFormInput('');
     const password = useFormInput('');
@@ -12,11 +14,11 @@ function Login(props) {
     const handleLogin = () => {
         setError(null);
         setLoading(true);
-        axios.post('http://localhost:5000/users/signin', { username: username.value, password: password.value }).then(response => {
-            console.log("no issues");
+        axios.post('http://localhost:5000/users/signin', { username: username.value, password: password.value })
+        .then((response) => {
             setLoading(false);
             setUserSession(response.data.token, response.data.user);
-            props.history.push('/dashboard');
+            history.push('/dashboard');
         }).catch(error => {
             setLoading(false);
             if (error.response && error.response.status === 401) setError(error.response.data.message);

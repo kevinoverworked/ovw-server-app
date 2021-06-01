@@ -108,9 +108,11 @@ app.post('/users/signin', function (req, res) {
 
 
   // verify the token and return it if it's valid
-app.get('/verifyToken', function (req, res) {
+app.post('/verifyToken', function (req, res) {
     // check header or url parameters or post parameters for token
+    console.log("server token");
     var token = req.query.token;
+    
     console.log(token);
     if (!token) {
       return res.status(400).json({

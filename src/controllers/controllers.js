@@ -1,24 +1,4 @@
-const { Client } = require('pg');
-
-
-
-const client = new Client({
-    connectionString: process.env.DATABASE_URL,// || 'postgresql://postgres:Superoverworked1!@localhost:5432/postgres',
-    ssl: false /*{
-      rejectUnauthorized: false
-    }*/
-  });
-client.connect();
-
-
-
-/*const saySomething = (req, res, next) => {
-    res.status(200).json({
-        body: 'Hello from the server!'
-    });
-};
-
-module.exports.saySomething = saySomething;*/
+const client = require("../connections/connections").instance;
 
 
 

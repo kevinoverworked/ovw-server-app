@@ -29,12 +29,14 @@ function Login(props) {
     return (
         <form>
             <fieldset>
+                <input type="text" name="username" {...username} autoComplete="new-password" required />
+                <span className="bar"></span>
                 <label>Username</label>
-                <input type="text" name="username" {...username} autoComplete="new-password" />
             </fieldset>
             <fieldset>
+                <input type="password" name="password" {...password} autoComplete="new-password" required />
+                <span className="bar"></span>
                 <label>Password</label>
-                <input type="password" name="password" {...password} autoComplete="new-password" />
             </fieldset>
             <input type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} />
             {error && <small style={{color: 'red'}}>{error}</small>}

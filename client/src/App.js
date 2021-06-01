@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios';
 import "./App.css";
-import { Navigation, Home, About, Login, Dashboard, LoginButton } from "./components";
+import "./styles/base.styles.scss";
+import { Header, Home, About, Login, Dashboard, LoginButton } from "./components";
 import PrivateRoute from './Utils/PrivateRoute';
 import PublicRoute from './Utils/PublicRoute';
 import { getToken, removeUserSession, setUserSession } from './Utils/Common';
@@ -12,39 +13,40 @@ function App() {
  
   useEffect(() => {
     const token = getToken();
+    console.log("app.js token");
     console.log(token);
     if (!token) {
+      console.log("token not in app.js");
       return;
     }
  
-    axios.get(`http://localhost:5000/verifyToken?token=${token}`).then(response => {
+    axios.get(`http://localhost:5000/verifyToken${token}`).then(response => {
       setUserSession(response.data.token, response.data.user);
       setAuthLoading(false);
     }).catch(error => {
+      console.log(error);
       removeUserSession();
       setAuthLoading(false);
     });
   }, []);
  
   if (authLoading && getToken()) {
-    return <div className="content">Checking Authentication...</div>
+    return <main>Checking Authentication...</main>
   }
 
 
   return (
     <div className="App">
       <Router>
-        <header>
-          <Navigation />
-        </header>
-        <div className="content">
+        <Header />
+        <main>
           <Switch>
             <Route path="/" exact component={() => <Home />} />
             <PublicRoute path="/about" exact component={() => <About />} />
             <PublicRoute path="/login" exact component={() => <Login />} />
             <PrivateRoute path="/dashboard" exact component={() => <Dashboard />} /> 
           </Switch>
-        </div>
+        </main>
       </Router>
     </div>
   );

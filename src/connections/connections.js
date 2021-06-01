@@ -9,4 +9,14 @@ const client = new Client({
 
 client.connect();
 
-module.exports.client = client;
+//module.exports.client = client;
+
+const singleton = {};
+Object.defineProperty(singleton, "instance", {
+    get: function () {
+        return client;
+    }
+});
+Object.freeze(singleton);
+
+module.exports.singleton = singleton;

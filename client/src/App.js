@@ -41,9 +41,12 @@ function App() {
         <Header />
         <main>
           <Switch>
-            <PublicRoute path="/" exact component={() => <Login />} />
-            <PrivateRoute path="./ovw-manager/editor" exact component={() => <Editor />} />
-            <PrivateRoute path="/dashboard" exact component={() => <Dashboard />} /> 
+          <Route path="/" exact component={() => <Login />} />
+
+            <Router basename={'/ovw-manager'}>
+              <Route path="/editor" exact component={() => <Editor />} />
+              <Route path="/dashboard" exact component={() => <Dashboard />} /> 
+            </Router>
           </Switch>
         </main>
       </Router>

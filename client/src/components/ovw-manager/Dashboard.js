@@ -1,23 +1,14 @@
 import React from 'react';
-import { getUser, removeUserSession } from '../../Utils/Common';
-import { useHistory } from "react-router-dom";
+import { getUser } from '../../Utils/Common';
 import { Link, withRouter } from "react-router-dom";
 import styles from "../../styles/dashboard.module.scss"
  
 function Dashboard(props) {
-  const user = getUser();
-  const history = useHistory();
- 
-  // handle click event of logout button
-  const handleLogout = () => {
-    removeUserSession();
-    history.push('/login');
-  }
- 
+  const user = getUser(); 
+  
   return (
     <div>
-      <h1>Welcome {user.first_name}!</h1>
-      <input type="button" onClick={handleLogout} value="Logout" />
+      <h1>Welcome {(user) ? user.first_name : ""}!</h1>
       <div className={` ${styles.container} ${styles['col-4']} `}>
         <section className={styles.card}>
           <div className={styles.content}>

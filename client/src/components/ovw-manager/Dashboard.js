@@ -1,7 +1,8 @@
 import React from 'react';
-import { getUser, removeUserSession } from '../Utils/Common';
+import { getUser, removeUserSession } from '../../Utils/Common';
 import { useHistory } from "react-router-dom";
 import { Link, withRouter } from "react-router-dom";
+import styles from "../../styles/dashboard.module.scss"
  
 function Dashboard(props) {
   const user = getUser();
@@ -17,23 +18,23 @@ function Dashboard(props) {
     <div>
       <h1>Welcome {user.first_name}!</h1>
       <input type="button" onClick={handleLogout} value="Logout" />
-      <div className="dashboard_container col-4">
-        <section className="card">
-          <div className="content">
-              <div className="title">
+      <div className={` ${styles.container} ${styles['col-4']} `}>
+        <section className={styles.card}>
+          <div className={styles.content}>
+              <div className={styles.title}>
                   <h2>Website Editor</h2>
-                  <p className="subtitle"></p>
+                  <p className={styles.subTitle}></p>
               </div>
-              <div className="media">
+              <div className={styles.media}>
                   <figure>
                   </figure>
               </div>
-              <div className="copy">
+              <div className={styles.copy}>
                 Edit your website using a custom built editor.
               </div>
           </div>
-          <div className="footer">
-              <div className="link">  
+          <div className={styles.footer}>
+              <div className={styles.link}>  
               <Link to="/editor">
                 Edit Website
               </Link>
@@ -44,22 +45,22 @@ function Dashboard(props) {
           <div className="deck">
           </div>
         </section>
-        <section className="card">
-          <div className="content">
-              <div className="title">
+        <section className={styles.card}>
+          <div className={styles.content}>
+              <div className={styles.title}>
                   <h2>Content Management</h2>
-                  <p className="subtitle"></p>
+                  <p className={styles.subTitle}></p>
               </div>
-              <div className="media">
+              <div className={styles.media}>
                   <figure>
                   </figure>
               </div>
-              <div className="copy">
+              <div className={styles.copy}>
                 Manage the content of your website with our custom built Content Management System.
               </div>
           </div>
-          <div className="footer">
-              <div className="link">  
+          <div className={styles.footer}>
+              <div className={styles.link}>  
               <Link to="/content-management">
                 Manage Content
               </Link>

@@ -1,0 +1,29 @@
+header.header {
+    display: flex;
+    background-color: var(--primary500);
+    color: var(--primary500-text);
+    padding: 1vw;
+    
+    a:link, a:visited, a:active {
+        color: var(--header-navigation-text);
+        text-decoration: none;
+    }
+
+    .logoWrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex: 1 1 50%;
+        align-items: center;
+        
+        .brand {
+            font-size: 2.5rem;
+            color: var(--primary500-text);
+            text-decoration: none;
+
+            span {
+                color: var(--secondary500);
+            }
+        }
+    }
+}

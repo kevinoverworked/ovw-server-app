@@ -8,4 +8,4 @@ class Editor extends Component {
     }
 }
 
-module.export = Editor;
+export default Editor;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import styles from "../styles/navigation.module.scss"
 
 class Navigation extends Component {
     constructor (props) {
@@ -9,40 +10,19 @@ class Navigation extends Component {
     render () {
         const props = this.navigation;
         return (
-            <div className="navigation">
+            <div className={styles.navigation}>
                 <nav className="navbar navbar-expand navbar-dark bg-dark">
                     <div className="container">
-                        <div>
-                            <ul className="navbar-nav ml-auto">
+                        <ul className="navbar-nav ml-auto">
                             <li
                                 className={`nav-item  ${
                                 props.location.pathname === "/" ? "active" : ""
-                                }`}
-                            >
+                                }`}>
                                 <Link className="nav-link" to="/">
-                                Home
-                                </Link>
-                            </li>
-                            <li
-                                className={`nav-item  ${
-                                props.location.pathname === "/about" ? "active" : ""
-                                }`}
-                            >
-                                <Link className="nav-link" to="/about">
-                                About
-                                </Link>
-                            </li>
-                            <li
-                                className={`nav-item  ${
-                                props.location.pathname === "/login" ? "active" : ""
-                                }`}
-                            >
-                                <Link className="nav-link" to="/login">
                                 Login
                                 </Link>
                             </li>
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
                 </nav>
             </div>

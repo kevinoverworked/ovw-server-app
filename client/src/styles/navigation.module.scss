@@ -1,0 +1,12 @@
+.navigation {
+    ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        list-style-type: none;
+
+        li {
+            padding: 0 1rem;
+        }
+    }
+}

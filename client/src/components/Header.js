@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import Navigation from "./Navigation";
+import styles from "../styles/header.module.scss"
 
 class Header extends Component {
     render () {
         return (
-            <header>
-                <div className="logoWrapper">
-                    <Link className="brand" to="/">
+            <header className={styles.header}>
+                <div className={styles.logoWrapper}>
+                    <Link className={styles.brand} to="/">
                         Overworked <span>Solutions</span>
                     </Link>
                     </div>

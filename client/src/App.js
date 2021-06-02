@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios';
 import "./App.css";
 import "./styles/base.styles.scss";
-import { Header, Home, About, Login, Dashboard, LoginButton } from "./components";
+import { Header, Login, Dashboard, Editor, LoginButton } from "./components";
 import PrivateRoute from './Utils/PrivateRoute';
 import PublicRoute from './Utils/PublicRoute';
 import { getToken, removeUserSession, setUserSession } from './Utils/Common';
@@ -41,9 +41,8 @@ function App() {
         <Header />
         <main>
           <Switch>
-            <Route path="/" exact component={() => <Home />} />
-            <PublicRoute path="/about" exact component={() => <About />} />
-            <PublicRoute path="/login" exact component={() => <Login />} />
+            <PublicRoute path="/" exact component={() => <Login />} />
+            <PrivateRoute path="./ovw-manager/editor" exact component={() => <Editor />} />
             <PrivateRoute path="/dashboard" exact component={() => <Dashboard />} /> 
           </Switch>
         </main>

@@ -1,14 +1,18 @@
 import React from 'react';
-import { getUser } from '../../Utils/Common';
+import { useAuth0 } from "@auth0/auth0-react";
 import { Link, withRouter } from "react-router-dom";
 import styles from "../../styles/dashboard.module.scss"
  
 function Dashboard(props) {
-  const user = getUser(); 
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
   
-  return (
+  return isAuthenticated && (
     <div>
-      <h1>Welcome {(user) ? user.first_name : ""}!</h1>
+      <h1>Welcome {(user) ? user.name : ""}!</h1>
       <div className={` ${styles.container} ${styles['col-4']} `}>
         <section className={styles.card}>
           <div className={styles.content}>

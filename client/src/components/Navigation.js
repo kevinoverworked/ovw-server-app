@@ -11,7 +11,7 @@ class Navigation extends Component {
     }
 
     // handle click event of logout button
-  handleLogout = () => {
+  handleLogout () {
     removeUserSession();
     this.props.history.push('/login');
   }
@@ -35,7 +35,7 @@ class Navigation extends Component {
                                 className={`nav-item  ${
                                 props.location.pathname === "/dashboard" ? "active" : ""
                                 }`}>
-                                <Link className="nav-link" to="/ovw-manager/dashboard">
+                                <Link className="nav-link" to="/dashboard">
                                 Dashboard
                                 </Link>
                             </li>

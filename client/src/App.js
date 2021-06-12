@@ -9,7 +9,7 @@ import PublicRoute from './Utils/PublicRoute';
 import { getToken, removeUserSession, setUserSession } from './Utils/Common';
 
 function App() {
-  const [authLoading, setAuthLoading] = useState(true);
+  /*const [authLoading, setAuthLoading] = useState(true);
  
   useEffect(() => {
     const token = getToken();
@@ -32,7 +32,7 @@ function App() {
  
   if (authLoading && getToken()) {
     return <main>Checking Authentication...</main>
-  }
+  }*/
 
 
   return (
@@ -41,12 +41,9 @@ function App() {
         <Header />
         <main>
           <Switch>
-          <Route path="/" exact component={() => <Login />} />
-
-            <Router basename={'/ovw-manager'}>
-              <Route path="/editor" exact component={() => <Editor />} />
-              <Route path="/dashboard" exact component={() => <Dashboard />} /> 
-            </Router>
+            <PublicRoute path="/" exact component={() => <LoginButton />} /> 
+            <Route path="/dashboard" exact component={() => <Dashboard />} /> 
+            <PrivateRoute path="/editor" exact component={() => <Editor />} />
           </Switch>
         </main>
       </Router>

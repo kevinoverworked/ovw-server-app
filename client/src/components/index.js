@@ -1,4 +1,3 @@
-export { default as Login } from "./Login";
 export { default as LoginButton } from "./LoginButton";
 export { default as Header } from "./Header";
 export { default as Navigation } from "./Navigation";

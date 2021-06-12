@@ -10,7 +10,7 @@ function Dashboard(props) {
     return <div>Loading ...</div>;
   }
   
-  return isAuthenticated && (
+  return  isAuthenticated && (
     <div>
       <h1>Welcome {(user) ? user.name : ""}!</h1>
       <div className={` ${styles.container} ${styles['col-4']} `}>

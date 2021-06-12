@@ -19,7 +19,7 @@ function Login(props) {
         .then((response) => {
             setLoading(false);
             setUserSession(response.data.token, response.data.user);
-            history.push('/dashboard');
+            history.push('/ovw-manager/dashboard');
         }).catch(error => {
             setLoading(false);
             if (error.response && error.response.status === 401) setError(error.response.data.message);

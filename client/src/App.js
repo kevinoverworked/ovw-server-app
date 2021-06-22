@@ -8,32 +8,6 @@ import PrivateRoute from './Utils/PrivateRoute';
 import PublicRoute from './Utils/PublicRoute';
 
 function App() {
-  /*const [authLoading, setAuthLoading] = useState(true);
- 
-  useEffect(() => {
-    const token = getToken();
-    console.log("app.js token");
-    console.log(token);
-    if (!token) {
-      console.log("token not in app.js");
-      return;
-    }
- 
-    axios.get(`http://localhost:5000/verifyToken${token}`).then(response => {
-      setUserSession(response.data.token, response.data.user);
-      setAuthLoading(false);
-    }).catch(error => {
-      console.log(error);
-      removeUserSession();
-      setAuthLoading(false);
-    });
-  }, []);
- 
-  if (authLoading && getToken()) {
-    return <main>Checking Authentication...</main>
-  }*/
-
-
   return (
     <div className="App">
       <Router>
